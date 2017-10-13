@@ -1,17 +1,22 @@
 
 from django.db import models
 
+class Person(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+
 
 class Sample(models.Model):
+
     Accession = models.CharField(max_length=30, primary_key=True)
-    Topology = models.CharField(max_length=30)
-    MolecularType = models.CharField(max_length=30)
-    DataClass = models.CharField(max_length=30)
+    Topology = models.CharField(max_length=30, null=True)
+    MolecularType = models.CharField(max_length=30, null=True)
+    DataClass = models.CharField(max_length=30, null=True)
     SequenceLength = models.INTEGER
     Sequence = models.TextField
-    SequenceVersion = models.CharField(max_length=30)
+    SequenceVersion = models.CharField(max_length=30, null=True)
     DateAdded = models.DateField
-    TaxonomicDivision = models.CharField(max_length=30)
+    TaxonomicDivision = models.CharField(max_length=30, null=True)
 
 
 class Publication(models.Model):
