@@ -1,9 +1,13 @@
 
 from django.db import models
 
+
 class Person(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
+
+    def __str__(self):  # __unicode__ on Python 2
+        return self.first_name
 
 
 class Sample(models.Model):
@@ -55,8 +59,9 @@ class From (models.Model):
     Genus = models.ForeignKey(Organisms, on_delete=models.CASCADE)
 
 
-
-
+p = Publication.objects.create(DOI='filler', Author='Chris Pratt', Journal='Nature', PublicationDate="Jan.4, 2011", URL="https://en.wikipedia.org/")
+s = Sample(Accession='111', SequenceLength=5,  Sequence='sldkfjlksdjf', DateAdded ="Jan.4, 2011")
+r = Reference(Accession='111', DOI = 'filler')
 
 
 
